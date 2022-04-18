@@ -2,3 +2,32 @@
   text-align: center;
 }
 
+.nav{
+  display: flex;
+  flex-direction: column;
+  /* align-content: center; */
+  justify-content: center;
+  height: 5em;
+  background-color: papayawhip;
+}
+
+.nav-contents{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2em;
+  align-content: center;
+}
+.nav-login{
+  display: flexbox;
+  border-radius: .5em;
+  height: fit-content;
+  padding: .4em;
+  margin-left: 1em;
+  align-self: center;
+  background-color: papayawhip;
+}
+.nav-actions{
+  align-self: center;
+  margin-left: 1em;
+}

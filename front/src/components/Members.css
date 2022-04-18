@@ -1,0 +1,5 @@
+.member-list{
+  display: flex;
+  align-content: flex-start;
+  padding: 3em ;
+}
