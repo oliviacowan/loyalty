@@ -7,8 +7,8 @@ export default function New() {
       <h3>Add a New Loyalty Member:</h3>
       <span className="new-name">
       <label>Name: </label>
-      <input className="name"/>
-      <button>Save</button>
+      <input className="input"/>
+      <button className="input">Save</button>
       </span>
     </section>
   )
