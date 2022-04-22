@@ -1,9 +1,18 @@
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Members from './components/Members';
 import New from './components/New';
 import Test from './components/Test';
 
 function App() {
+const [data, setData] = useState();
+  useEffect(() => {
+    axios.get('/users')
+    .then((res) => { setData(res.data) })
+    .catch((err) => {console.log('errrorrr: ', err)});
+  }, [setData])
+
   return (
     <div className="App">
       <nav className="nav">
@@ -17,7 +26,7 @@ function App() {
         </nav>
      <New/>
      <Members />
-     <Test />
+     <Test data={data}/>
     </div>
   );
 }
