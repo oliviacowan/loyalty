@@ -1,6 +1,7 @@
 import './App.css';
 import Members from './components/Members';
 import New from './components/New';
+import Test from './components/Test';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         </nav>
      <New/>
      <Members />
+     <Test />
     </div>
   );
 }
