@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Test.css';
 import DataTable, { defaultThemes } from 'react-data-table-component';
 
@@ -34,23 +34,29 @@ let columns = [
   },
   {
     name: 'Expiry:',
-    selector: (row) => row.expiry,
+    selector: (row) => row.expiry .slice(0,10),
   },
   {
     name: '20% Off Used:',
-    selector: (row) => row.used,
+    selector: (row) => row.used.toString(),
   },
 ];
 
-
-
-export default function Test( {data} ) {
-  
-
+export default function Test({ data }) {
+  // const [unused, setUsed] = useEffect(false)
+  if (data) {
+  data.map((e) => {
+    console.log('type', typeof e.expiry)
+  });}
   return (
     <section className="table">
-      <DataTable columns={columns} data={data} customStyles={customStyles} />
-    {/* <h4>{props.data}</h4> */}
+      <DataTable
+        columns={columns}
+        // truth={() => { console.log(true) } }
+        data={data}
+        customStyles={customStyles}
+        // selectableRows
+      />
     </section>
   );
 }
