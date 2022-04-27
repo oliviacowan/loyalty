@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import './Test.css';
 import DataTable, { defaultThemes } from 'react-data-table-component';
 
@@ -27,36 +27,56 @@ const customStyles = {
   },
 };
 
-let columns = [
-  {
-    name: 'Name:',
-    selector: (row) => row.name,
-  },
-  {
-    name: 'Expiry:',
-    selector: (row) => row.expiry .slice(0,10),
-  },
-  {
-    name: '20% Off Used:',
-    selector: (row) => row.used.toString(),
-  },
-];
 
-export default function Test({ data }) {
-  // const [unused, setUsed] = useEffect(false)
-  if (data) {
-  data.map((e) => {
-    console.log('type', typeof e.expiry)
-  });}
+  
+  
+  export default function Test({ data }) {
+    const [unused, setUsed] = useState(false);
+    
+    let columns = [
+      {
+        name: 'Name:',
+        selector: (row) => row.name,
+      },
+      {
+        name: 'Expiry:',
+        selector: (row) => row.expiry.slice(0, 10),
+      },
+      {
+        name: '20% Used:',
+        button: true,
+        selector: (row) => row.used.toString(),
+        // cell: function handleRowClick = () => row => {
+          //   console.log(row);
+          //  }
+        },
+        {
+          button: true,
+      cell: () => (
+        <button
+        type="button"
+        className="use-now-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+        >
+          Use Now
+        </button>
+      ),
+      
+    },
+  ];
+  const conditionalStyles = [ 
+  {
+    when: row => (row.used === 'false'),
+    style: {
+      backgroundColor: "green",
+      userSelect: "none"
+    }
+  }
+];
   return (
     <section className="table">
-      <DataTable
-        columns={columns}
-        // truth={() => { console.log(true) } }
-        data={data}
-        customStyles={customStyles}
-        // selectableRows
-      />
+      <DataTable columns={columns} data={data} customStyles={customStyles} conditionalStyles={conditionalStyles}/>
     </section>
   );
 }
