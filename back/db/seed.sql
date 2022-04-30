@@ -1,3 +1,3 @@
 
-INSERT INTO users(name) VALUES('Olivia Cowan');
-INSERT INTO users(name) VALUES('Hanah Willow');
+INSERT INTO users(name, used) VALUES('Olivia Cowan', true);
+INSERT INTO users(name, used) VALUES('Hanah Willow', false);

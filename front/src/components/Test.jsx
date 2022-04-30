@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Test.css';
 import DataTable, { defaultThemes } from 'react-data-table-component';
 
@@ -31,7 +32,7 @@ const customStyles = {
   
   
   export default function Test({ data }) {
-    const [unused, setUsed] = useState(false);
+    const [unused, setUsed] = useState('false');
     
     let columns = [
       {
@@ -44,7 +45,7 @@ const customStyles = {
       },
       {
         name: '20% Used:',
-        button: true,
+        // button: true,
         selector: (row) => row.used.toString(),
         // cell: function handleRowClick = () => row => {
           //   console.log(row);
@@ -55,9 +56,18 @@ const customStyles = {
       cell: () => (
         <button
         type="button"
+        id={4}
         className="use-now-btn"
-        data-bs-toggle="modal"
-        data-bs-target="#myModal"
+        // data-bs-toggle="modal"
+        // data-bs-target="#myModal"
+        onClick={() => {
+          // console.log('id')
+          // useEffect(() => {
+          //   axios.get('/users')
+          //   .then((res) => { setData(res.data) })
+          //   .catch((err) => {console.log('errrorrr: ', err)});
+          // }, [setData])
+        }}
         >
           Use Now
         </button>
@@ -65,18 +75,20 @@ const customStyles = {
       
     },
   ];
-  const conditionalStyles = [ 
-  {
-    when: row => (row.used === 'false'),
-    style: {
-      backgroundColor: "green",
-      userSelect: "none"
-    }
-  }
-];
+//   const conditionalStyles = [ 
+//   {
+//     when: row => (row.used === 'false'),
+//     style: {
+//       backgroundColor: "green",
+//       userSelect: "none"
+//     }
+//   }
+// ];
   return (
     <section className="table">
-      <DataTable columns={columns} data={data} customStyles={customStyles} conditionalStyles={conditionalStyles}/>
+      <DataTable columns={columns} data={data} customStyles={customStyles} 
+      // conditionalStyles={conditionalStyles}
+      />
     </section>
   );
 }
