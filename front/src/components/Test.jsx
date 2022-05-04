@@ -56,12 +56,13 @@ const customStyles = {
       cell: () => (
         <button
         type="button"
-        id={4}
+        id={3}
         className="use-now-btn"
         // data-bs-toggle="modal"
         // data-bs-target="#myModal"
         onClick={() => {
-          // console.log('id')
+          data.map((member) => {console.log(member.id)})
+          // console.log(row.id)
           // useEffect(() => {
           //   axios.get('/users')
           //   .then((res) => { setData(res.data) })
